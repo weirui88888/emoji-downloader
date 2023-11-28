@@ -1,0 +1,35 @@
+{
+  "name": "emoji-downloader",
+  "version": "1.0.0",
+  "description": "one line of code to download all the emoji images you want",
+  "type": "module",
+  "files": [
+    "cmd",
+    "src"
+  ],
+  "keywords": [
+    "emoji",
+    "tool",
+    "executable",
+    "web"
+  ],
+  "bin": {
+    "emoji-downloader": "./cmd/download.js"
+  },
+  "author": {
+    "name": "xdzi8b",
+    "email": "ruiwei88888@163.com",
+    "url": "https://github.com/weirui88888/"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "ansi-colors": "^4.1.3",
+    "axios": "^1.6.2",
+    "commander": "^11.1.0",
+    "puppeteer": "^21.5.2",
+    "rimraf": "^5.0.5"
+  },
+  "volta": {
+    "node": "18.0.0"
+  }
+}

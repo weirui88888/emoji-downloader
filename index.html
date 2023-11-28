@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" href="https://static.anyphoto.space/emojis/flags/1f1e8-1f1f3.png" />
+    <meta name="keywords" content="emoji, 组件库, 表情符号, HTML, CSS, JavaScript, download emoji, vue, react" />
+    <meta
+      name="description"
+      content="target is a website demo that helps you create your own emoji component library with one line of code"
+    />
+    <title>Emoji-Downloader-Demo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+      }
+      h1 {
+        font-size: 20px;
+        height: 40px;
+        line-height: 40px;
+      }
+      .picked-emoji-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 25px;
+        height: 120px;
+      }
+      .picked-emoji-img {
+        width: 40px;
+        height: 40px;
+        display: none;
+      }
+
+      .container {
+        max-width: calc(100vw - 64px);
+        max-height: 50%;
+        overflow: scroll;
+      }
+      .footer {
+        margin-top: 60px;
+        max-width: calc(100vw - 64px);
+      }
+
+      .emoji-title {
+        padding: 0 10px;
+        position: sticky;
+        top: 0;
+        background: #000000;
+        color: #ffffff;
+        z-index: 10;
+      }
+      .emoji-img-container {
+        cursor: pointer;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        padding: 5px;
+        position: relative;
+      }
+      .emoji-img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .picked-emoji-wrap::before {
+        background-color: #44b700;
+        color: #44b700;
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        content: '';
+      }
+
+      .picked-emoji-wrap::after {
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        animation: ripple 1.2s infinite ease-in-out;
+        border: 1px solid #44b700;
+        content: '';
+      }
+
+      #busuanzi_container_site_pv {
+        position: fixed;
+        left: 4px;
+        bottom: 4px;
+        font-size: 12px;
+      }
+
+      @media screen and (min-width: 480px) {
+        .footer,
+        .container {
+          max-width: 480px;
+        }
+      }
+
+      .github-corner:hover .octo-arm {
+        animation: octocat-wave 560ms ease-in-out;
+      }
+      @keyframes octocat-wave {
+        0%,
+        100% {
+          transform: rotate(0);
+        }
+        20%,
+        60% {
+          transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+          transform: rotate(10deg);
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 16px;
+        }
+        .github-corner:hover .octo-arm {
+          animation: none;
+        }
+        .github-corner .octo-arm {
+          animation: octocat-wave 560ms ease-in-out;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .footer,
+        .container {
+          max-width: 320px;
+        }
+      }
+
+      @keyframes ripple {
+        from {
+          transform: scale(0.8);
+          opacity: 1;
+        }
+        to {
+          transform: scale(2.4);
+          opacity: 0;
+        }
+      }
+    </style>
+    <script src="./lazyload.min.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  </head>
+  <body>
+    <a href="https://github.com/weirui88888/emoji-downloader" class="github-corner" aria-label="View source on GitHub">
+      <svg
+        width="80"
+        height="80"
+        viewBox="0 0 250 250"
+        style="fill: #151513; color: #fff; position: absolute; top: 0; border: 0; right: 0"
+        aria-hidden="true"
+      >
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path
+          d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+          fill="currentColor"
+          style="transform-origin: 130px 106px"
+          class="octo-arm"
+        ></path>
+        <path
+          d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+          fill="currentColor"
+          class="octo-body"
+        ></path>
+      </svg>
+    </a>
+    <header class="picked-emoji-container">
+      <h3 class="picked-emoji-img-title">Picked Emoji</h3>
+      <img class="picked-emoji-img" alt="picked-emoji-img" />
+    </header>
+    <main class="container"></main>
+    <footer class="footer">
+      <h5>
+        Tip: This is just a demo to provide a demonstration. The data source comes from the configuration file generated
+        by the tool with one line of code. You can create your own emoji component library based on the data source
+        created by 👉 <a href="https://github.com/weirui88888/emoji-downloader">emoji-downloader</a>
+      </h5>
+    </footer>
+    <span id="busuanzi_container_site_pv">PV:<span id="busuanzi_value_site_pv"></span></span>
+    <script type="module">
+      import data from './emojis/data.js'
+      const lazyLoadInstance = new LazyLoad()
+      const container = document.querySelector('.container')
+      const pickedEmojiImg = document.querySelector('.picked-emoji-img')
+      let lastPickedEmojiImgContainer = null
+      let orderData = []
+      for (const values of Object.values(data)) {
+        orderData = [...orderData, values]
+      }
+      orderData = orderData.sort((a, b) => a.order - b.order)
+      for (const { en_name, zh_name, name, resources } of orderData) {
+        const emojiTitle = document.createElement('h1')
+        const emojiContainer = document.createElement('div')
+        emojiTitle.innerText = `${en_name}(${zh_name})`
+        emojiTitle.classList.add('emoji-title', name)
+        container.appendChild(emojiTitle)
+        for (const { name, src } of resources) {
+          const emojiImgContainer = document.createElement('div')
+          emojiImgContainer.classList.add('emoji-img-container', name)
+          const emojiImg = document.createElement('img')
+          emojiImg.classList.add('emoji-img', name.replace('.png', ''), 'lazy')
+          emojiImg.setAttribute('data-src', src)
+          emojiImgContainer.appendChild(emojiImg)
+          emojiContainer.appendChild(emojiImgContainer)
+        }
+        container.appendChild(emojiContainer)
+      }
+
+      lazyLoadInstance.update()
+
+      document.querySelector('.container').addEventListener('click', event => {
+        const { target } = event
+        if (target.classList.contains('emoji-img')) {
+          if (lastPickedEmojiImgContainer) {
+            lastPickedEmojiImgContainer.classList.remove('picked-emoji-wrap')
+          }
+          lastPickedEmojiImgContainer = target.parentNode
+          lastPickedEmojiImgContainer.classList.add('picked-emoji-wrap')
+          const pickedEmojiSrc = target.getAttribute('src')
+          pickedEmojiImg.setAttribute('src', pickedEmojiSrc)
+          pickedEmojiImg.style.display = 'block'
+        }
+      })
+    </script>
+  </body>
+</html>
