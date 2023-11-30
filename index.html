@@ -9,7 +9,7 @@
       name="description"
       content="target is a website demo that helps you create your own emoji component library with one line of code"
     />
-    <title>Emoji-Downloader-Demo</title>
+    <title>emoji-downloader-demo</title>
     <style>
       * {
         margin: 0;
@@ -30,6 +30,9 @@
         font-size: 20px;
         height: 40px;
         line-height: 40px;
+      }
+      img:not([src]):not([srcset]) {
+        visibility: hidden;
       }
       .picked-emoji-container {
         display: flex;

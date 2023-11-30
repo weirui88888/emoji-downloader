@@ -1,5 +1,7 @@
 ## [English](./EN-README.md)
 
+![demo.gif](https://emoji-downloader.newarray.vip/demo.gif)
+
 ## :rotating_light: 重要提示
 
 我再次强调，这不是一个emoji组件库，只是一个帮助你下载所有emoji并生成与之配套的配置文件的工具。借助此工具，你可以轻松自定义自己的emoji组件库。
