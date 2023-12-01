@@ -1,6 +1,6 @@
 {
   "name": "emoji-downloader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "one line of code to download all the emoji images you want",
   "type": "module",
   "files": [
@@ -22,6 +22,11 @@
     "email": "ruiwei88888@163.com",
     "url": "https://github.com/weirui88888/"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/weirui88888/emoji-downloader.git"
+  },
+  "homepage": "https://github.com/weirui88888/emoji-downloader#readme",
   "license": "ISC",
   "dependencies": {
     "ansi-colors": "^4.1.3",

@@ -1,4 +1,4 @@
-## [English](./EN-README.md)
+## [English](https://github.com/weirui88888/emoji-downloader/blob/main/EN-README.md)
 
 ![demo.gif](https://emoji-downloader.newarray.vip/demo.gif)
 
